@@ -10,17 +10,16 @@ from kubeconfig.exceptions import KubectlCommandError
 
 logger = logging.getLogger(__name__)
 
-class HelloWorld(aetest.Testcase):
+class ApplyCRD(aetest.Testcase):
 
     @aetest.test
     def test(self):
-        logger.info('Hello World!')
+        logger.info('ApplyCRD!')
         try:
-            kubectl.run(self.kubeconfig_path, cmd)
-            self.pod_wait_for_running_and_ready_state()
-            log.info('Applied resources from the config file: %s', config_path)
+            kubectl.run(subcmd_args = "get ns")
+            logger.info('Applied resources from the config file: %s', config_path)
         except KubectlCommandError as ex:
-            log.error(ex.message)
+            logger.error(ex.message)
             raise ex
 
 # main()
