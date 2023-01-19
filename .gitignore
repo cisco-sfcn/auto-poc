@@ -1,0 +1,35 @@
+.DS_Store
+.idea
+.vscode
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
+
+# go.sum should be committed
+!go.sum
+
+# CDK asset staging directory
+.cdk.staging
+**/cdk.out
+
+!jest.config.js
+*.d.ts
+**/node_modules/
+**/cdk.context.json
+**/*-rendered.yaml
+
+# Build directories
+**/build/**
+**/tmp/**
+
+# Configs used for local testing/development
+**/myconfigs/**
