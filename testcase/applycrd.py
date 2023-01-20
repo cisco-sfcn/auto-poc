@@ -18,8 +18,8 @@ class ApplyCRD(aetest.Testcase):
         logger.info('ApplyCRD!')
         try:
             cmd = ["get", "ns"]
-            kubectl.run("/root/.kube/config", cmd)
-            logger.info('Applied resources from the config file: %s', config_path)
+            out = kubectl.run("/root/.kube/config", cmd)
+            logger.info("out = %s", out)
         except KubectlCommandError as ex:
             logger.error(ex.message)
             raise ex
