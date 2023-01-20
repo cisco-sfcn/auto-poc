@@ -17,7 +17,7 @@ class ApplyCRD(aetest.Testcase):
     def test(self):
         logger.info('ApplyCRD!')
         try:
-            kubectl.run(subcmd_args="kubectl get ns")
+            kubectl.run(subcmd_args="get ns")
             logger.info('Applied resources from the config file: %s', config_path)
         except KubectlCommandError as ex:
             logger.error(ex.message)
