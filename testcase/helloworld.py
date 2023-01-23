@@ -15,6 +15,13 @@ class HelloWorld(aetest.Testcase):
         logger.info('Hello World!')
 
     @aetest.test
+    def failure(self):
+        logger.info('failure World!')
+        assert 1 == 0
+
+class ByeWorld(aetest.Testcase):
+
+    @aetest.test
     def byeworld(self):
         logger.info('Bye World!')
 
