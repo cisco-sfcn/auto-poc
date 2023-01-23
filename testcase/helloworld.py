@@ -8,26 +8,25 @@ from pyats import aetest
 
 logger = logging.getLogger(__name__)
 
-class HelloWorld(aetest.Testcase):
+class Success(aetest.Testcase):
 
     @aetest.test
     def helloworld(self):
         logger.info('Hello World!')
 
     @aetest.test
-    def failure(self):
-        logger.info('failure World!')
-        assert 1 == 0
+    def successTC(self):
+        assert 1 == 1
 
-class ByeWorld(aetest.Testcase):
 
-    @aetest.test
-    def byeworld(self):
-        logger.info('Bye World!')
+class Failure(aetest.Testcase):
 
     @aetest.test
-    def failure(self):
-        logger.info('failure World!')
+    def helloworld(self):
+        logger.info('Hello World!')
+
+    @aetest.test
+    def failureTC(self):
         assert 1 == 0
 
 # main()
