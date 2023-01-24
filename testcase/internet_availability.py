@@ -14,7 +14,7 @@ class InternetAvailability(aetest.Testcase):
     def test(self):
         logger.info('Internet Availability')
         try:
-            cmd = [ping -c 3 8.8.8.8]
+            cmd = [ping -n 3 8.8.8.8]
             out = self.ping(cmd)
             logger.info("out = %s", out)
         except Exception as ex:
