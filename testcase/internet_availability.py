@@ -11,8 +11,8 @@ logger = logging.getLogger(__name__)
 
 class InternetAvailability(aetest.Testcase):
 
-    @aetest.test(destination=('8.8.8.8'))
-    def ping(self, destination):
+    @aetest.test
+    def ping(self, destination='8.8.8.8'):
         logger.info('ping -c 3 8.8.8.8')
         try:
             result = self.ping(destination)
