@@ -3,6 +3,7 @@
 #
 #   Pinging 8.8.8.8
 
+
 import logging
 from pyats import aetest
 
@@ -10,16 +11,24 @@ logger = logging.getLogger(__name__)
 
 class InternetAvailability(aetest.Testcase):
 
-    @aetest.test
-    def test(self):
-        logger.info('Internet Availability')
+    @aetest.test.destination='8.8.8.8'
+    def ping(self, destination):
+        logger.info('ping -c 3 8.8.8.8')
         try:
-            cmd = [ping -n 3 8.8.8.8]
-            out = self.ping(cmd)
-            logger.info("out = %s", out)
+            result = self.ping(destination)
         except Exception as ex:
             logger.error(ex.message)
             raise ex
+
+class Failure(aetest.Testcase):
+
+    @aetest.test
+    def helloworld(self):
+        logger.info('Hello World!')
+
+    @aetest.test
+    def failureTC(self):
+        assert 1 == 0
 
 
 class PingTestcase(aetest.Testcase):
