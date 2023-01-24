@@ -13,7 +13,7 @@ class InternetAvailability(aetest.Testcase):
 
     @aetest.test
     def ping(self, destination='-c 4 8.8.8.8'):
-#        logger.info('ping -c 3 8.8.8.8')
+        logger.info('ping -c 3 8.8.8.8')
         try:
             result = self.ping(destination)
         except Exception as ex:
@@ -30,29 +30,29 @@ class Failure(aetest.Testcase):
     def failureTC(self):
         assert 1 == 0
 
+# /*
+# class PingTestcase(aetest.Testcase):
 
-class PingTestcase(aetest.Testcase):
+    # @aetest.test.loop(destination=('8.8.8.8', '172.17.10.2'))
+    # def ping1(self, destination):
+        # try:
+            # result = self.ping(destination)
 
-    @aetest.test.loop(destination=('8.8.8.8', '172.17.10.2'))
-    def ping(self, destination):
-        try:
-            result = self.ping(destination)
+        # except Exception as e:
+            # self.failed('Ping {} is failed with error: {}'.format(
+                # destination,
+                # str(e),
+            # ),
+                # goto=['exit'])
+        # else:
+            # match = re.search(r'Success rate is (?P<rate>\d+) percent', result)
+            # success_rate = match.group('rate')
 
-        except Exception as e:
-            self.failed('Ping {} is failed with error: {}'.format(
-                destination,
-                str(e),
-            ),
-                goto=['exit'])
-        else:
-            match = re.search(r'Success rate is (?P<rate>\d+) percent', result)
-            success_rate = match.group('rate')
-
-            logger.info('Ping {} with success rate of {}%'.format(
-                destination,
-                success_rate,
-            )
-            )
+            # logger.info('Ping {} with success rate of {}%'.format(
+                # destination,
+                # success_rate,
+            # )
+            # )
 
 
 # main()
