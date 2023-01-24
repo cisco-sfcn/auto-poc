@@ -12,10 +12,10 @@ logger = logging.getLogger(__name__)
 class InternetAvailability(aetest.Testcase):
 
     @aetest.test
-    def ping(self, destination='-c 4 8.8.8.8'):
-        logger.info('ping -c 3 8.8.8.8')
+    def ping(self, destination='http://google.com'):
+        logger.info('curl -k test')
         try:
-            result = self.ping(destination)
+            result = self.curl(destination)
         except Exception as ex:
             logger.error(ex.message)
             raise ex
