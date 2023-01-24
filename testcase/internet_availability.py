@@ -30,29 +30,29 @@ class Failure(aetest.Testcase):
     def failureTC(self):
         assert 1 == 0
 
-# /*
-# class PingTestcase(aetest.Testcase):
 
-    # @aetest.test.loop(destination=('8.8.8.8', '172.17.10.2'))
-    # def ping1(self, destination):
-        # try:
-            # result = self.ping(destination)
+class PingTestcase(aetest.Testcase):
 
-        # except Exception as e:
-            # self.failed('Ping {} is failed with error: {}'.format(
-                # destination,
-                # str(e),
-            # ),
-                # goto=['exit'])
-        # else:
-            # match = re.search(r'Success rate is (?P<rate>\d+) percent', result)
-            # success_rate = match.group('rate')
+    @aetest.test.loop(destination=('8.8.8.8', '172.17.10.2'))
+    def ping1(self, destination):
+        try:
+            result = self.ping(destination)
 
-            # logger.info('Ping {} with success rate of {}%'.format(
-                # destination,
-                # success_rate,
-            # )
-            # )
+        except Exception as e:
+            self.failed('Ping {} is failed with error: {}'.format(
+                destination,
+                str(e),
+            ),
+                goto=['exit'])
+        else:
+            match = re.search(r'Success rate is (?P<rate>\d+) percent', result)
+            success_rate = match.group('rate')
+
+            logger.info('Ping {} with success rate of {}%'.format(
+                destination,
+                success_rate,
+            )
+            )
 
 
 # main()
