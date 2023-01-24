@@ -34,7 +34,7 @@ class Failure(aetest.Testcase):
 class PingTestcase(aetest.Testcase):
 
     @aetest.test.loop(destination=('8.8.8.8', '172.17.10.2'))
-    def ping1(self, destination):
+    def ping(self, destination):
         try:
             result = self.ping(destination)
 
