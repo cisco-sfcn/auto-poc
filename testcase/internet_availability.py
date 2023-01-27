@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 class InternetAvailability(aetest.Testcase):
 
     @aetest.test
-    def ping(self, destination='http://google.com'):
+    def ping(self, destination='google.com'):
         logger.info('curl -k test')
         try:
             result = self.curl(destination)
